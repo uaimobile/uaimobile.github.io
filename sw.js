@@ -1,11 +1,11 @@
 
-const cacheActual = 'UAIMobile-v1';
+const cacheActual = 'UAIMobile-v2';
 
 const recursosEstaticos = [
   'css/materialize.min.css',
   'css/estilos.css',
   'js/materialize.min.js' , 
-  'icons/pdf.svg'
+  'icons/uai.svg'
 ];
 
 self.addEventListener('install', function(event) 
