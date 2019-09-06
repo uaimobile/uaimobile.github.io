@@ -1,11 +1,12 @@
 
-const cacheActual = 'UAIMobile-v3';
+const cacheActual = 'UAIMobile-v4';
 
 const recursosEstaticos = [
   'css/materialize.min.css',
   'css/estilos.css',
   'js/materialize.min.js' , 
-  'icons/uai.svg'
+  'icons/uai.svg',
+  'icons/192.png'
 ];
 
 self.addEventListener('install', function(event) 
@@ -31,18 +32,4 @@ self.addEventListener('fetch', function (event) {
   );
 });
 
-self.addEventListener("activate", function(event) {
-  event.waitUntil(
-    caches.keys().then(function(cachesExistentes) {
-      return Promise.all(
-        cachesExistentes.map(function(cacheVieja) {
-          if (cacheVieja !== cacheActual) 	  
-		  {		
-            return caches.delete(cacheVieja);
-          }
-        })
-      );
-    })
-  );
-  return self.clients.claim(); //fuerza que todos los clientes se actualicen
-});
+
