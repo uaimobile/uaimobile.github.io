@@ -1,6 +1,7 @@
  <!DOCTYPE html>
   <html>
-    <head	>	  	       
+    <head>	
+	<link rel="manifest" href="/manifest.json"> 
       <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
 	  <link type="text/css" rel="stylesheet" href="css/estilos.css"  media="screen,projection"/>      
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>	    	
@@ -60,7 +61,8 @@
 			var elems = document.querySelectorAll('.collapsible');
 			var instances = M.Collapsible.init(elems, '');
 		});
-	   
+	   if ('serviceWorker' in navigator)
+		   navigator.serviceWorker.register('/sw.js');	
 		   		  
 	  </script>
     </main>
