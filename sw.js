@@ -1,5 +1,5 @@
 
-const cacheActual = 'UAIMobile-v8';
+const cacheActual = 'UAIMobile-v1';
 
 const recursosEstaticos = [
   'css/materialize.min.css',
@@ -32,7 +32,7 @@ self.addEventListener('fetch', function (event) {
   );
 });
 
-
+/*
 self.addEventListener("activate", function(event) {
   event.waitUntil(
     caches.keys().then(function(cachesExistentes) {
@@ -48,3 +48,4 @@ self.addEventListener("activate", function(event) {
   );
  // return self.clients.claim(); //fuerza que todos los clientes se actualicen
 });
+*/
