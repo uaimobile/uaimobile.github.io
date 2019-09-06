@@ -1,5 +1,5 @@
 
-const cacheActual = 'UAIMobile-v7';
+const cacheActual = 'UAIMobile-v8';
 
 const recursosEstaticos = [
   'css/materialize.min.css',
