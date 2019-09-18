@@ -1,5 +1,5 @@
 
-const cacheActual = 'UAIMobile-v5';
+const cacheActual = 'UAIMobile-v6';
 
 const recursosEstaticos = [
   'css/materialize.min.css',
@@ -29,14 +29,14 @@ self.addEventListener('fetch', function (event) {
           return response;
         }
         
-	try 
-	    {	   
-	      	return  fetch(request);
-	    } 
-	    catch (err) 
-	    {	    
-		return caches.match('offline.html');	    	 
-   	    }	  
+	      
+	if (event.request.mode === 'navigate') {
+ 	 return event.respondWith(
+    		fetch(event.request).catch(() => caches.match('offline.html'))
+  	);
+	}
+	      
+	
 	      
       })
   );
@@ -46,6 +46,15 @@ self.addEventListener('fetch', function (event) {
 	  
 
 /*
+try 
+	    {	   
+	      	return  fetch(request);
+	    } 
+	    catch (err) 
+	    {	    
+		return caches.match('offline.html');	    	 
+   	    }	  
+
 self.addEventListener('fetch', function (event) {
   event.respondWith(
     caches.match(event.request)
