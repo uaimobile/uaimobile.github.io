@@ -1,5 +1,5 @@
 
-const cacheActual = 'UAIMobile-v1';
+const cacheActual = 'UAIMobile-v2';
 
 const recursosEstaticos = [
   'css/materialize.min.css',
@@ -27,25 +27,31 @@ self.addEventListener('fetch', function (event) {
         if (response) {
           return response;
         }
-        return fetch(event.request);
+       // return fetch(event.request);
+	      
+	    try {
+	      // Otherwise, get from the network
+	      return await fetch(request);
+	    } catch (err) {
+	      // If this was a navigation, show the offline page:
+	      if (request.mode === 'navigate') {
+		return caches.match('offline.html');
+	      }   
       })
   );
 });
 
 /*
-self.addEventListener("activate", function(event) {
-  event.waitUntil(
-    caches.keys().then(function(cachesExistentes) {
-      return Promise.all(
-        cachesExistentes.map(function(cacheVieja) {
-          if (cacheVieja !== cacheActual) 	  
-		  {		
-            return caches.delete(cacheVieja);
-          }
-        })
-      );
-    })
+self.addEventListener('fetch', function (event) {
+  event.respondWith(
+    caches.match(event.request)
+      .then(function (response) {
+        if (response) {
+          return response;
+        }
+        return fetch(event.request);
+      })
   );
- // return self.clients.claim(); //fuerza que todos los clientes se actualicen
 });
+
 */
