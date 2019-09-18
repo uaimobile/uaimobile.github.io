@@ -1,12 +1,13 @@
 
-const cacheActual = 'UAIMobile-v4';
+const cacheActual = 'UAIMobile-v5';
 
 const recursosEstaticos = [
   'css/materialize.min.css',
   'css/estilos.css',
   'js/materialize.min.js' , 
   'icons/uai.svg',
-  'icons/192.png'
+  'icons/192.png',
+   'offline.html'
 ];
 
 self.addEventListener('install', function(event) 
@@ -27,19 +28,22 @@ self.addEventListener('fetch', function (event) {
         if (response) {
           return response;
         }
-       // return fetch(event.request);
+        
+	try 
+	    {	   
+	      	return  fetch(request);
+	    } 
+	    catch (err) 
+	    {	    
+		return caches.match('offline.html');	    	 
+   	    }	  
 	      
-	    try {
-	      // Otherwise, get from the network
-	      return  fetch(request);
-	    } catch (err) {
-	      // If this was a navigation, show the offline page:
-	      //if (request.mode === 'navigate') {
-		return caches.match('offline.html');
-	      //}   
-   	   }
+      })
   );
 });
+
+	  
+	  
 
 /*
 self.addEventListener('fetch', function (event) {
