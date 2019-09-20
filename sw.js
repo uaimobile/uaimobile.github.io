@@ -4,7 +4,7 @@ const cacheActual = 'UAIMobile-v1';
 const recursosEstaticos = [
   'css/materialize.min.css',  
   'js/materialize.min.js' , 
-  'icons/uai.svg',
+  'icons/512.svg',
   'icons/192.png'   
 ];
 
